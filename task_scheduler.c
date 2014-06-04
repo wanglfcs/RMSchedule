@@ -95,6 +95,7 @@ Task* rm_schedule(int time, Processor *processor){
 			processor->cur_task = t;
 			task_to_run = t;
 			task_to_run->execute_time++;
+			putchar(43);
 		}
 		node = node->next;
 	}

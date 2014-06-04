@@ -9,7 +9,7 @@
 #include "binary_search_tree.h"
 
 //#define CLOCK_TO_MS(clock, ms) { ms = (clock/10000);}
-#define GET_ARRAY_LEN(array,len) {len = (sizeof(array) / sizeof(array[0]));}
+const int CLOCK_TO_MS = 10000000;
 
 //name, index, t, c, d, p, execute_time, func, state
 static Task tasks[] = {
@@ -41,6 +41,7 @@ void mc_init() {
 	int treeValues[] = { 1, 4, 5, 7, 8, 2, 3, 9, 6, 5, 1, 0 };
 	int len = 0;
 	GET_ARRAY_LEN(treeValues, len);
+	printf("Build Search Tree");
 	s_search_tree = build_tree(treeValues, len);
 	dump_tree(s_search_tree);
 	
@@ -57,7 +58,7 @@ void mc_main() {
 		//set timer interrupt handler
 		set_handlerR((int)isr);
 		//set timer interrupt intervals
-		set_timerInterval(100000000);
+		set_timerInterval(CLOCK_TO_MS);
 
 		//set interrupt enable
 		set_mask(0);
@@ -66,12 +67,11 @@ void mc_main() {
 }
 
 int test_func_execute_time(Func *func){
-	//counters_start();
+	counters_start();
 	(*func)();
-	return 3;
-	//counters_stop();
-	//int count = counters_readAndZero(0);
-	//return count/10000;
+	counters_stop();
+	int count = counters_readAndZero(0);
+	return count/CLOCK_TO_MS;
 }
 
 void init_tasks()
@@ -88,7 +88,7 @@ void init_tasks()
 
 	for(int i=0;i<length;i++){
 		printf("test func execute time %d\n" ,  i+1);
-		//tasks[i].c = test_func_execute_time(tasks[i].func);
+		tasks[i].c = test_func_execute_time(tasks[i].func);
 		tasks[i].c = i+2;
 		tasks[i].t = tasks[i].c*5;
 		tasks[i].saved_state[30] = (int)isr;
@@ -117,7 +117,7 @@ void init_tasks()
 	if (scheduable>0){
 		printf("RM scheduable\n");
 		printf("Monitor RM schedule table\n");
-		for (int i = 0; i < 10000; i++){
+		for (int i = 0; i < 5000; i++){
 			Task *t = rm_schedule(i, p);
 			if (t != NULL){
 				if (t->c <= t->execute_time){
@@ -140,7 +140,7 @@ void init_tasks()
 	else{
 		printf("Can't schedule by RM\n");
 	}
-	*/
+*/	
 }
 
 void schedule(){
@@ -154,7 +154,6 @@ void schedule(){
 	if(task_to_run!=NULL){
 		puts(task_to_run->name);
 		putchar(10);
-		puts("test\n");
 	}
 	timer++;
 
@@ -173,12 +172,13 @@ void schedule(){
 			}
 		}
 	}
-	putchar(43);
 }
 
 /* Task 1 Reverse Integer */
 void task_1() {
-	printf("task1\n");
+	if(wait_after_done==0){
+		printf("task1 start\n");
+	}
 	int src0 = 123456789;
 	int src1 = -123456789;
 	int src2 = 0;
@@ -190,21 +190,20 @@ void task_1() {
 	int dest3 = reverse_integer(src3);
 	int dest4 = reverse_integer(src4);
 
-	if(wait_after_done){
+	if(wait_after_done==1){
 		task_done(processor);
 		while (1);
+	}else{
+		printf("task1 done\n");
 	}
 }
 
 /* Task 2 Binary Search Tree -- insert & delete */
 void task_2(){
-	printf("task2\n");
-	//insert(s_search_tree, 14);
-	//insert(s_search_tree, 15);
-	//insert(s_search_tree, 2);
-	search_node(s_search_tree, 10);
-	search_node(s_search_tree, 11);
-
+	//printf("task2\n");
+	insert(s_search_tree, 14);
+	insert(s_search_tree, 15);
+	insert(s_search_tree, 2);
 
 	//delete(s_search_tree, 14);
 	//delete(s_search_tree, 15);
@@ -219,7 +218,7 @@ void task_2(){
 
 /* Task 2 Binary Search Tree -- search */
 void task_3(){
-	printf("task3\n");
+	//printf("task3\n");
 	search_node(s_search_tree, 5);
 	search_node(s_search_tree, 6);
 	search_node(s_search_tree, 12);

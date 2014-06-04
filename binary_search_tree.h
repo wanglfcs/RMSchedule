@@ -6,12 +6,19 @@ typedef struct TreeNode {
 	struct TreeNode *right;
 }TreeNode;
 
+typedef struct TreeNodePool{
+	int pool_size;
+	TreeNode *nodes;
+	int *available;
+}TreeNodePool;
+
 typedef struct SearchTree{
 	struct TreeNode *head;
 	int depth;
 	int node_count;
 	int max;
 	int min;
+	struct TreeNodePool *node_pool;
 }SearchTree;
 
 int max_depth(TreeNode *root);
