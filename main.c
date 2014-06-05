@@ -52,9 +52,9 @@ void mc_main() {
 	if(core == 2){
 		s_processor = new_processor("Processor1");
 		s_tasks = new_tasks(names, 3);
-		puts(s_tasks[0].name);
-		puts(s_tasks[1].name);
-		puts(s_tasks[2].name);
+		//puts(s_tasks[0].name);
+		//puts(s_tasks[1].name);
+		//puts(s_tasks[2].name);
 		putchar(s_tasks[0].index+'0');
 		putchar(s_tasks[1].index+'0');
 		putchar(s_tasks[2].index+'0');
@@ -123,7 +123,10 @@ void init_tasks(Processor *processor, Task *tasks, int count)
 //	}
 
 	/*puts("push tasks\n");*/
-	set_tasks(processor,tasks,count);
+	//set_tasks(processor,tasks,count);
+	processor->tasks=tasks;
+	processor->task_cnt=count;
+	putchar(processor->tasks[2].index+'0');
 	putchar('&');
 	putchar(10);
 //	dump_processor(processor);
