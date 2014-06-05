@@ -1,4 +1,5 @@
 #include<stdio.h>
+#define TASK_NR 3
 
 typedef void(*Func)();
 
@@ -13,39 +14,28 @@ typedef struct Task
 	int execute_time;
 	Func *func;
 	volatile unsigned int saved_state[33];//saved register data
-}Task;
-
-typedef struct TaskNode
-{
-	struct Task *task;
-	struct TaskNode *next;
 	int ready;//1 for ready 0 for not.
-}TaskNode;
-
-typedef struct TaskList
-{
-	struct TaskNode *head;
-	struct TaskNode *tail;
-	int count;
-}TaskList;
+}Task;
 
 typedef struct Processor
 {
 	//static data
 	char *name;
 	double usage;
-	struct TaskList *tasks;
+	struct Task *tasks;
+	int task_cnt;
 
-	//runtime data. sorted task list
+	//runtime data.
 	Task *cur_task;
 }Processor;
 
 #define GET_ARRAY_LEN(array,len) {len = (sizeof(array) / sizeof(array[0]));}
 
-Task* new_task();
+static Processor global_processor;
+static Task global_task[TASK_NR];
+
+Task* new_tasks(char *names[], int size);
 Processor* new_processor();
-void init_processor(Processor *p);
-TaskList* new_task_list();
 
 void init_tasks_priority(Task *tasks, int task_cnt);
 
@@ -70,3 +60,4 @@ Task* rm_schedule(int time, Processor *processor);
 
 /* Schedule task using RMFF algorithm. Tasks are preemptive if the first argument is set true*/
 void ff_distribute_task(Task *tasks, int task_cnt, Processor *processors, int processor_cnt);
+void set_tasks(Processor *p,Task *t,int task_cnt);

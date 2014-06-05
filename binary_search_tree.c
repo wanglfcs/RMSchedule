@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include "binary_search_tree.h"
 
 const int NODE_POOL_SIZE = 128;
@@ -23,7 +24,7 @@ TreeNode* new_node(TreeNodePool *node_pool, int val){
 
 SearchTree* new_search_tree(){
 	//printf("new_search_tree\n");
-	SearchTree *tree = malloc(sizeof(SearchTree));
+	SearchTree *tree = (SearchTree *) malloc(sizeof(SearchTree));
 	tree->head = NULL;
 	tree->max = 0;
 	tree->min = 0;
@@ -35,7 +36,7 @@ SearchTree* new_search_tree(){
 
 TreeNodePool* new_node_pool(){
 	//printf("new_node_pool\n");
-	TreeNodePool *pool = malloc(sizeof(TreeNodePool));
+	TreeNodePool *pool = (TreeNodePool *)malloc(sizeof(TreeNodePool));
 	pool->pool_size = NODE_POOL_SIZE;
 	pool->nodes =  (TreeNode *)malloc(sizeof(TreeNode)*NODE_POOL_SIZE);
 	pool->available = (int *)malloc(sizeof(int)*NODE_POOL_SIZE);
@@ -63,18 +64,16 @@ TreeNode* insert_node(SearchTree *tree, TreeNode *head, int value){
 
 int insert(SearchTree *tree, int value){
 	//printf("insert %d\n", value);
-	int succ = insert_node(tree, tree->head,value);
-	if (succ){
-		if (value > tree->max){
-			tree->max = value;
-		}
-		if (value < tree->min){
-			tree->min = value;
-		}
-		tree->node_count++;
-		tree->depth = max_depth(tree->head);
+	insert_node(tree, tree->head,value);
+	if (value > tree->max){
+		tree->max = value;
 	}
-	return succ;
+	if (value < tree->min){
+		tree->min = value;
+	}
+	tree->node_count++;
+	tree->depth = max_depth(tree->head);
+	return 1;
 }
 
 int delete(SearchTree *tree, int value){
