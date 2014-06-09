@@ -8,6 +8,11 @@
 #include "task_scheduler.h"
 #include "binary_search_tree.h"
 
+#define STI if(corenum()!=1) \
+				set_mask(0);
+#define CLI if(corenum()!=1) \
+				set_mask(1);
+
 //#define CLOCK_TO_MS(clock, ms) { ms = (clock/10000);}
 const int CLOCK_TO_MS = 10000000;
 static Processor *s_processor;
@@ -17,6 +22,7 @@ char *names[] = {
 	};
 
 static int wait_after_done = 0;
+static int is_idle=0;
 
 /*Search tree for test*/
 // static SearchTree *s_search_tree;
@@ -30,6 +36,7 @@ void task_3();
 int reverse_integer(int x);
 int test_func_execute_time(Func *func);
 void init_tasks(Processor *processor, Task *tasks, int count);
+void idle(){while(1);}
 
 void mc_init() {
 	//set_mask(1);
@@ -148,7 +155,7 @@ void schedule(){
 	timer++;
 
 	if (task_to_run != pre_task){
-		if (pre_task != NULL){
+		if ((pre_task != NULL)&&!is_idle){
 			//switch task
 			//save previous task state
 			for (i = 0; i < 32; i++){
@@ -159,7 +166,13 @@ void schedule(){
 			//restore current task state
 			for (i = 0; i < 32; i++){
 				pData[i] = task_to_run->saved_state[i];
+				is_idle=0;
 			}
+		}
+		else
+		{
+			pData[31]=idle;
+			is_idle=1;
 		}
 	}
 }
@@ -173,6 +186,9 @@ void task_1() {
 		/*putchar('s');*/
 		/*putchar(10);*/
 	}
+//	CLI
+//	putchar('A');
+//	STI
 	int dest0 = reverse_integer(123456789);
 	int dest1 = reverse_integer(-123456789);
 	int dest2 = reverse_integer(0);
@@ -181,7 +197,12 @@ void task_1() {
 
 	if(wait_after_done==1){
 		task_done(s_processor);
-		while (1);
+		while (1)
+		{
+//			CLI
+			putchar('A');
+//			STI
+		}
 	}else{
 		/*puts("task1 done\n");*/
    /*    putchar('1');*/
@@ -201,6 +222,9 @@ void task_2(){
 	//delete(s_search_tree, 15);
 	//delete(s_search_tree, 2);
 
+//	CLI
+	putchar('B');
+//	STI
 	for(int i=0;i<3;i++){
 		int dest0 = reverse_integer(123456789);
 		int dest1 = reverse_integer(-123456789);
@@ -211,7 +235,13 @@ void task_2(){
 
 	if(wait_after_done){
 		task_done(s_processor);
-		while (1);
+		while (1)
+		{
+//			CLI
+			putchar('B');
+//			STI
+		}
+
 	}
 	
 }
@@ -224,6 +254,9 @@ void task_3(){
 	//search_node(s_search_tree, 12);
 	/*putchar(10);*/
 
+//	CLI
+//	putchar('C');
+//	STI
 	for(int i=0;i<5;i++){
 		int dest0 = reverse_integer(123456789);
 		int dest1 = reverse_integer(-123456789);
@@ -236,7 +269,8 @@ void task_3(){
 
 	if(wait_after_done){
 		task_done(s_processor);
-		while (1);
+		while (1)
+		putchar('C');
 	}
 	
 }
@@ -262,3 +296,5 @@ int reverse_integer(int x){
 	}
 	return result;
 }
+
+

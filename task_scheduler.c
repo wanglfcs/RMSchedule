@@ -89,10 +89,13 @@ Task* rm_schedule(int time, Processor *processor){
 			putchar('$');
 		else
 			putchar('&');
+
 		if (time%cur->t == 0){
 			cur->ready++;
 		}
+putchar(cur->ready+'0');
 		if(first >0 && cur->ready>0){
+putchar('-');
 			first = 0;
 			processor->cur_task = cur;
 			task_to_run = cur;
