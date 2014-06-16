@@ -145,7 +145,7 @@ void *malloc(size_t size) {
     msg[1] = size;
     message_send(1, msgTypeRPC, &msg, 2);
     void *res = (void *)getResponse();
-    if (res) cache_invalidateMem(res, size);
+    //if (res) cache_invalidateMem(res, size);
     return res;
    }
 }

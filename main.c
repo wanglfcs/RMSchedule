@@ -7,6 +7,7 @@
 #include "shared/timerInterrupt.h"
 #include "task_scheduler.h"
 #include "binary_search_tree.h"
+#include"myprintf.h"
 
 #define STI if(corenum()!=1) \
 				set_mask(0);
@@ -16,6 +17,7 @@
 //#define CLOCK_TO_MS(clock, ms) { ms = (clock/10000);}
 const int CLOCK_TO_MS = 10000000;
 static Processor *s_processor;
+static int currentTask=0;
 static Task *s_tasks;
 char *names[] = {
 		"task1", "task2", "task3"
@@ -57,6 +59,7 @@ void mc_init() {
 void mc_main() {
 	int core = corenum();
 	if(core == 2){
+		wait_after_done = 0;
 		s_processor = new_processor("Processor1");
 		s_tasks = new_tasks(names, 3);
 		//puts(s_tasks[0].name);
@@ -84,6 +87,7 @@ void mc_main() {
 		//set interrupt enable
 		putchar('f');
 		set_mask(0);
+		task_1();
 		while (1);
 	}
 }
@@ -142,17 +146,21 @@ void init_tasks(Processor *processor, Task *tasks, int count)
 void schedule(){
 	int i, done;
 	int *pData = (int *)(corenum() * 512 + 0x4000);
-	Task *pre_task = s_processor->cur_task;
-	Task *task_to_run = rm_schedule(timer, s_processor);
+	Task *pre_task ;//= s_processor->cur_task;
+	Task *task_to_run; //= rm_schedule(timer, s_processor);
 
 	int t = timer%10;
 	putchar(48+t);
 	putchar(10);
 	if(task_to_run!=NULL){
-		puts(task_to_run->name);
+		myprintf("%s\n",task_to_run->name);
 		putchar('o');
 	}
 	timer++;
+	
+	pre_task=s_tasks+currentTask;
+	currentTask = (currentTask + 1) %3;
+	task_to_run=s_tasks+currentTask;
 
 	if (task_to_run != pre_task){
 		if ((pre_task != NULL)&&!is_idle){
@@ -179,6 +187,7 @@ void schedule(){
 
 /* Task 1 Reverse Integer */
 void task_1() {
+//start_Task1:
 	if(wait_after_done==0){
 		/*puts("task1 start\n");*/
    /*     putchar(10);*/
@@ -187,7 +196,7 @@ void task_1() {
 		/*putchar(10);*/
 	}
 //	CLI
-//	putchar('A');
+	putchar('A');
 //	STI
 	int dest0 = reverse_integer(123456789);
 	int dest1 = reverse_integer(-123456789);
@@ -197,10 +206,12 @@ void task_1() {
 
 	if(wait_after_done==1){
 		task_done(s_processor);
+	//	goto start_Task1;
 		while (1)
 		{
 //			CLI
 			putchar('A');
+			putchar(10);
 //			STI
 		}
 	}else{
@@ -213,6 +224,7 @@ void task_1() {
 
 /* Task 2 Binary Search Tree -- insert & delete */
 void task_2(){
+//start_Task2:
 	//puts("task2\n");
 	//insert(s_search_tree, 14);
 	//insert(s_search_tree, 15);
@@ -235,10 +247,12 @@ void task_2(){
 
 	if(wait_after_done){
 		task_done(s_processor);
+//		goto start_Task2;
 		while (1)
 		{
 //			CLI
 			putchar('B');
+			putchar(10);
 //			STI
 		}
 
@@ -248,6 +262,7 @@ void task_2(){
 
 /* Task 2 Binary Search Tree -- search */
 void task_3(){
+//start_Task3:
 	//puts("task3\n");
 	//search_node(s_search_tree, 5);
 	//search_node(s_search_tree, 6);
@@ -255,7 +270,7 @@ void task_3(){
 	/*putchar(10);*/
 
 //	CLI
-//	putchar('C');
+	putchar('C');
 //	STI
 	for(int i=0;i<5;i++){
 		int dest0 = reverse_integer(123456789);
@@ -269,8 +284,12 @@ void task_3(){
 
 	if(wait_after_done){
 		task_done(s_processor);
+//		goto start_Task3;
 		while (1)
-		putchar('C');
+		{
+			putchar('C');
+			putchar(10);
+		}
 	}
 	
 }
