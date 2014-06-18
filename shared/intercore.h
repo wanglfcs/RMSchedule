@@ -114,7 +114,11 @@ static int icSleep(unsigned int n) {
   // Spin for n cycles. Assumes n is less than 2^31.
   //
   unsigned int start = *cycleCounter;
-  while (*cycleCounter - start < n) {}
+  while (*cycleCounter - start < n) {
+  	if(*cycleCounter<start)
+  		break;
+  
+  }
 }
 
 static int icSema_tryP(int n) {
@@ -182,14 +186,24 @@ static unsigned int cacheMultiple(unsigned int len) {
 
 static void cache_flushMem(void *addr, unsigned int len) {
   // Flush memory for addresses [addr..addr+len-1]
+  
   if (len > 0) {
     unsigned int countMinus1 =
       cacheLineAddress(addr+len-1) - cacheLineAddress(addr);
+      int i,k;
+       unsigned int *base=addr;
+    for (i=countMinus1; i >=0; i--) {
+        k += *base;
+        base += 32;
+    } 
     if (countMinus1 >= 127) {
       cache_flush(0, 127);
     } else {
       cache_flush(cacheLineAddress(addr) & 127, countMinus1);
     }
+    __asm__("j flush_mem_putchar");
+    putchar(k+'0');
+    __asm__("flush_mem_putchar:");
   }
   // If len <= 0, countMinus1 could be negative, so don't do that
 }
@@ -198,20 +212,24 @@ static void cache_invalidateMem(void *addr, unsigned int len) {
   // Invalidate memory for addresses [addr..addr+len-1]
   if (len > 0) {
     int i, k;
-    //unsigned int *base;
+    unsigned int *base;
     unsigned int countMinus1 =
       cacheLineAddress(addr+len-1) - cacheLineAddress(addr);
     
-    /*base = (unsigned int*)(cacheLineAddress(addr) << 5);
+    base=addr;
     for (i=countMinus1; i >=0; i--) {
         k += *base;
         base += 32;
-    } */
+    } 
     if (countMinus1 >= 127) {
       cache_invalidate(0, 127);
     } else {
       cache_invalidate(cacheLineAddress(addr) & 127, countMinus1);
     }
+    __asm__("tags:\n\t"\
+    		"j after_putchar");
+    putchar(k+'0');
+    __asm__("after_putchar:");
   }
   // If len <= 0, countMinus1 could be negative, so don't do that
 }

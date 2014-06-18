@@ -11,7 +11,7 @@
 
 #include "intercore.h"
 
-#define DEVICE_COUNTERS ((6 << 2) | 2)
+#define DEVICE_COUNTERS ((7 << 2) | 2)
 
 static void counters_start() {
   // Set "run" in the counters I/O device

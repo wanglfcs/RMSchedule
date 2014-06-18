@@ -44,10 +44,11 @@ vb = $29     // not callee save, rw & rb only, not avail for reg alloc
 	.type	_isr, @function
 _isr:
 // 4 "isr.c" 1
-	
+	//close the interrupt
 	ld		wq,1
 	aqw_ld void,26
 
+	//save 0-30 register
 	ld       wq, $1	
 	ld       wq, $2  
 	ld       wq, $3  
@@ -78,21 +79,26 @@ _isr:
 	ld       wq, $28 
 	add      wq, zero, $29  
 	ld       wq, link
+	//write address
 	ld		  $1,30
 	j7       1        
 	sub  link, link, 4 
 	aqw_add  link, link, 4 
 	sub      $1, $1, 1 
 	jnz      .-2 
+	//get condition register
 	aqr_ld	  vb,250
 	ld		  $2,rq
 	ld		  wq,$2
 	aqw_add  link,link,4
+	//get saved pc
 	aqr_ld	  vb,122
 	ld		  $2,rq
 	ld		  wq,$2
 	aqw_add  link,link,4
+	//ld		sp,link
 
+	//do schedule
 	long_call   _schedule
 
 	j7  1
@@ -132,13 +138,16 @@ _isr:
 	ld       $29, rq        
 	ld       link, rq       
 	
+	//open interrupt
 	ld		wq,0
 	aqw_ld void,26
 
-	ld	    wq,250
-	aqw_ld void,rq
+	//set conditon register
+	ld	    wq,rq
+	aqw_ld void,250
 
 	j		  rq             
+//	j .
 	
 	.size	_isr, .-_isr
 	.ident	"GCC: (GNU) 4.3.3"

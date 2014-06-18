@@ -9,22 +9,19 @@
 #include "binary_search_tree.h"
 #include"myprintf.h"
 
-#define STI if(corenum()!=1) \
-				set_mask(0);
-#define CLI if(corenum()!=1) \
-				set_mask(1);
 
 //#define CLOCK_TO_MS(clock, ms) { ms = (clock/10000);}
 const int CLOCK_TO_MS = 10000000;
 static Processor *s_processor;
-static int currentTask=0;
+static int currentTask=2;
 static Task *s_tasks;
+int stacks[3][1000];
 char *names[] = {
 		"task1", "task2", "task3"
 	};
 
 static int wait_after_done = 0;
-static int is_idle=0;
+//static int is_idle=0;
 
 /*Search tree for test*/
 // static SearchTree *s_search_tree;
@@ -41,19 +38,6 @@ void init_tasks(Processor *processor, Task *tasks, int count);
 void idle(){while(1);}
 
 void mc_init() {
-	//set_mask(1);
-	// Called in core #1 before the calls of mc_main
-	// int treeValues[] = { 1, 4, 5, 7, 8, 2, 3, 9, 6, 5, 1, 0 };
-	// int len = 0;
-	// GET_ARRAY_LEN(treeValues, len);
-	// printf("Build Search Tree");
-	// s_search_tree = build_tree(treeValues, len);
-	// dump_tree(s_search_tree);
-	
-	/*for(int i=0;i<3;i++)*/
-		/*dump_task(s_tasks+i);*/
-	/*cache_flushMem(s_processor,sizeof(Processor));*/
-	/*cache_flushMem(s_tasks,sizeof(s_tasks)*3);*/
 }
 
 void mc_main() {
@@ -87,7 +71,7 @@ void mc_main() {
 		//set interrupt enable
 		putchar('f');
 		set_mask(0);
-		task_1();
+		task_3();
 		while (1);
 	}
 }
@@ -103,8 +87,8 @@ int test_func_execute_time(Func *func){
 
 void init_tasks(Processor *processor, Task *tasks, int count)
 {
-	/*puts("init_tasks");*/
-	putchar(10);
+__asm__("j7 7");
+	puts("init_tasks");
 	putchar(count+'0');
 	putchar(10);
 	Func t1 = task_1;
@@ -116,17 +100,18 @@ void init_tasks(Processor *processor, Task *tasks, int count)
 
 	for(int i=0;i<count;i++){
 		/*puts("test func execute time ");*/
-		putchar('e');
 		tasks[i].c = test_func_execute_time(tasks[i].func);
 		tasks[i].t = tasks[i].c*5;
 		tasks[i].saved_state[30] = (int)isr;
-		putchar(tasks[i].index+'0');
 		/*putchar(10);*/
 	}
 
 	tasks[0].saved_state[31] = (int)task_1;
+	tasks[0].saved_state[27] = (int)stacks[0];
 	tasks[1].saved_state[31] = (int)task_2;
+	tasks[1].saved_state[27] = (int)stacks[1];
 	tasks[2].saved_state[31] = (int)task_3;
+	tasks[2].saved_state[27] = (int)stacks[2];
 
 	init_tasks_priority(tasks, count);
 //	for(int i=0;i<length;i++){
@@ -137,33 +122,30 @@ void init_tasks(Processor *processor, Task *tasks, int count)
 	//set_tasks(processor,tasks,count);
 	processor->tasks=tasks;
 	processor->task_cnt=count;
-	putchar(processor->tasks[2].index+'0');
-	putchar('&');
-	putchar(10);
 //	dump_processor(processor);
+	puts("task init finish");
 }
 
 void schedule(){
 	int i, done;
 	int *pData = (int *)(corenum() * 512 + 0x4000);
-	Task *pre_task ;//= s_processor->cur_task;
-	Task *task_to_run; //= rm_schedule(timer, s_processor);
+	Task *pre_task = s_processor->cur_task;
+	Task *task_to_run= rm_schedule(timer, s_processor);
 
 	int t = timer%10;
 	putchar(48+t);
 	putchar(10);
 	if(task_to_run!=NULL){
 		myprintf("%s\n",task_to_run->name);
-		putchar('o');
 	}
 	timer++;
 	
-	pre_task=s_tasks+currentTask;
-	currentTask = (currentTask + 1) %3;
-	task_to_run=s_tasks+currentTask;
+   /* pre_task=s_tasks+currentTask;*/
+	//currentTask = (currentTask + 1) %3;
+	//task_to_run=s_tasks+currentTask;
 
 	if (task_to_run != pre_task){
-		if ((pre_task != NULL)&&!is_idle){
+		if (pre_task != NULL){
 			//switch task
 			//save previous task state
 			for (i = 0; i < 32; i++){
@@ -174,14 +156,14 @@ void schedule(){
 			//restore current task state
 			for (i = 0; i < 32; i++){
 				pData[i] = task_to_run->saved_state[i];
-				is_idle=0;
+				//is_idle=0;
 			}
 		}
-		else
-		{
-			pData[31]=idle;
-			is_idle=1;
-		}
+   /*     else*/
+		//{
+			//pData[31]=idle;
+			//is_idle=1;
+		/*}*/
 	}
 }
 
@@ -210,8 +192,8 @@ void task_1() {
 		while (1)
 		{
 //			CLI
-			putchar('A');
-			putchar(10);
+   /*         putchar('A');*/
+			/*putchar(10);*/
 //			STI
 		}
 	}else{
@@ -251,8 +233,8 @@ void task_2(){
 		while (1)
 		{
 //			CLI
-			putchar('B');
-			putchar(10);
+   /*         putchar('B');*/
+			/*putchar(10);*/
 //			STI
 		}
 
@@ -287,8 +269,8 @@ void task_3(){
 //		goto start_Task3;
 		while (1)
 		{
-			putchar('C');
-			putchar(10);
+   /*         putchar('C');*/
+			/*putchar(10);*/
 		}
 	}
 	

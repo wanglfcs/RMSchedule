@@ -115,12 +115,12 @@ int putchar(int c) {
     while ((*rs232 & 0x200) == 0) thread_yield();
     *rs232 = (c & 0xff) | 0x200;
   } else {
-    clearResponse();
+	  clearResponse();
     IntercoreMessage msg;
     msg[0] = mcPutchar;
     msg[1] = c;
     message_send(1, msgTypeRPC, &msg, 2);
-    getResponse(); // block to avoid overflowing core #1's message queue
+    //getResponse(); // block to avoid overflowing core #1's message queue
    }
   return 0;
 }

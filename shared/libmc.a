@@ -106,8 +106,8 @@
       <w v="ef800305" />
       <w v="07c000c5" />
       <w v="00006a06" />
-      <w v="07c3ea05" />
-      <w v="e8000306" />
+      <w v="efc00305" />
+      <w v="0003ea06" />
       <w v="e800030c" />
       <ep i="0000002e">
         <bin op="bic">
@@ -26973,7 +26973,7 @@
     <globl name="_strokeRect" seg=".text" off="00000654" />
   </object>
   <object file="mcLibc.o" coderota="00000000" datarota="00000002">
-    <segment name=".text" kind="code" ibase="00000000" isize="000001c4" rota="00000000" alignbic="00000000">
+    <segment name=".text" kind="code" ibase="00000000" isize="000001b0" rota="00000000" alignbic="00000000">
       <w v="e7001246" />
       <w v="f7c00305" />
       <w v="27400245" />
@@ -27019,31 +27019,11 @@
       <w v="e800030c" />
       <w v="e7001246" />
       <w v="f7c00305" />
-      <w v="27400245" />
-      <w v="f8002e0a" />
-      <w v="188a0300" />
-      <w v="20400645" />
-      <w v="184a0400" />
-      <w v="09000845" />
-      <w v="0041fa05" />
-      <w v="0f401045" />
-      <w v="f8001e0f" />
-      <w v="10c1fe85" />
-      <w v="00000003" />
-      <w v="f0000308" />
-      <w v="e7000207" />
-      <w v="e7001205" />
-      <w v="e800030c" />
-      <w v="00c000c5" />
-      <w v="0101fe05" />
-      <w v="00000003" />
-      <w v="f0000308" />
-      <w v="e7000207" />
-      <w v="e7001205" />
-      <w v="e800030c" />
-      <w v="e7001246" />
-      <w v="f7c00305" />
-      <w v="e7002245" />
+      <w v="e7004245" />
+      <w v="e7403206" />
+      <w v="67c00305" />
+      <w v="e7402206" />
+      <w v="5fc00305" />
       <w v="e7401206" />
       <w v="57c00305" />
       <w v="e7400306" />
@@ -27057,16 +27037,21 @@
       <w v="e8800305" />
       <w v="17400407" />
       <w v="ea400305" />
+      <w v="484a0e00" />
+      <w v="488a0300" />
+      <w v="0a800845" />
       <w v="00000003" />
-      <w v="f2800305" />
-      <w v="48c00305" />
-      <w v="01001205" />
-      <w v="50000308" />
+      <w v="f3000305" />
+      <w v="12c1fe85" />
+      <w v="f800460c" />
+      <w v="00c000c5" />
+      <w v="0101fe05" />
+      <w v="60000308" />
       <w v="4f400307" />
       <w v="e8400305" />
       <w v="00800345" />
       <w v="0f400845" />
-      <w v="f800460e" />
+      <w v="f800520e" />
       <w v="07408a07" />
       <w v="e8800305" />
       <w v="07408a07" />
@@ -27074,22 +27059,34 @@
       <w v="08400845" />
       <w v="00cf9e05" />
       <w v="1f400445" />
-      <w v="f800164b" />
-      <w v="48c00305" />
-      <w v="01001205" />
-      <w v="50000308" />
+      <w v="f8005e0b" />
+      <w v="0041fa05" />
+      <w v="0f402845" />
+      <w v="f8004a4f" />
+      <w v="58c00305" />
+      <w v="51000305" />
+      <w v="60000308" />
       <w v="4f400307" />
       <w v="e8400305" />
       <w v="00800345" />
       <w v="0f400845" />
-      <w v="f8003e4a" />
+      <w v="f8004a4a" />
       <w v="e7400307" />
       <w v="ea400305" />
       <w v="e7401207" />
       <w v="ea800305" />
-      <w v="e7002207" />
+      <w v="e7402207" />
+      <w v="eac00305" />
+      <w v="e7403207" />
+      <w v="eb000305" />
+      <w v="e7004207" />
       <w v="e7001205" />
       <w v="e800030c" />
+      <w v="07408a07" />
+      <w v="e8400305" />
+      <w v="0f400845" />
+      <w v="f8007e4b" />
+      <w v="f8006a4c" />
       <w v="e7001246" />
       <w v="f7c00305" />
       <w v="e7040245" />
@@ -27132,58 +27129,43 @@
       <w v="e800030c" />
       <w v="e7001246" />
       <w v="f7c00305" />
-      <w v="e7041245" />
-      <w v="e7401206" />
-      <w v="57c00305" />
+      <w v="e7040245" />
       <w v="e7400306" />
       <w v="4fc00305" />
-      <w v="1a800305" />
+      <w v="1a400305" />
       <w v="07400a07" />
       <w v="e8400305" />
       <w v="08540300" />
       <w v="08403e85" />
       <w v="00800605" />
       <w v="0f400845" />
-      <w v="f8007a0a" />
+      <w v="f800520a" />
       <w v="00000003" />
       <w v="f0000308" />
-      <w v="e7402206" />
+      <w v="e7401206" />
       <w v="07c00a05" />
-      <w v="e7403206" />
-      <w v="57c00305" />
+      <w v="e7402206" />
+      <w v="4fc00305" />
       <w v="00c00605" />
       <w v="19000305" />
-      <w v="e1402205" />
+      <w v="e1401205" />
       <w v="01800a05" />
       <w v="00000003" />
       <w v="f0000308" />
       <w v="00000003" />
       <w v="f0000308" />
-      <w v="0a400305" />
-      <w v="0f400245" />
-      <w v="f800160a" />
-      <w v="08c00305" />
-      <w v="51000305" />
-      <w v="00000003" />
-      <w v="f0000308" />
-      <w v="48400305" />
       <w v="e7400307" />
       <w v="ea400305" />
-      <w v="e7401207" />
-      <w v="ea800305" />
-      <w v="e7041207" />
+      <w v="e7040207" />
       <w v="e7001205" />
       <w v="e800030c" />
       <w v="18c05205" />
       <w v="00000003" />
       <w v="f0000308" />
-      <w v="0a405205" />
-      <w v="48400305" />
+      <w v="08405205" />
       <w v="e7400307" />
       <w v="ea400305" />
-      <w v="e7401207" />
-      <w v="ea800305" />
-      <w v="e7041207" />
+      <w v="e7040207" />
       <w v="e7001205" />
       <w v="e800030c" />
       <w v="e7001246" />
@@ -27203,7 +27185,7 @@
       <w v="f800760e" />
       <w v="00402a05" />
       <w v="1f400445" />
-      <w v="f800c20a" />
+      <w v="f800ba0a" />
       <w v="07400a07" />
       <w v="e8400305" />
       <w v="08480285" />
@@ -27241,8 +27223,6 @@
       <w v="01800a05" />
       <w v="00000003" />
       <w v="f0000308" />
-      <w v="00000003" />
-      <w v="f0000308" />
       <w v="004000c5" />
       <w v="e7400307" />
       <w v="ea400305" />
@@ -27254,7 +27234,7 @@
       <w v="00c03605" />
       <w v="00000003" />
       <w v="f0000308" />
-      <w v="f800ca4c" />
+      <w v="f800c24c" />
       <w v="e7001246" />
       <w v="f7c00305" />
       <w v="e7004245" />
@@ -27486,43 +27466,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000037">
-        <bin op="bic">
-          <refsym name="_cache_invalidate" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="00000038">
-        <bin op="rol">
-          <bin op="bic">
-            <refsym name="_cache_invalidate" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="0000003e">
-        <bin op="bic">
-          <refsym name="_cache_invalidate" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="0000003f">
-        <bin op="rol">
-          <bin op="bic">
-            <refsym name="_cache_invalidate" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="0000004e">
+      <ep i="0000003a">
         <bin op="bic">
           <refseg name="cacheline" off="00000000" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000004f">
+      <ep i="0000003b">
         <bin op="rol">
           <bin op="bic">
             <refseg name="cacheline" off="00000000" />
@@ -27531,28 +27481,28 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000053">
+      <ep i="00000042">
         <bin op="bic">
-          <refseg name=".text" off="0000002b" />
+          <refsym name="_cache_invalidate" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000054">
+      <ep i="00000043">
         <bin op="rol">
           <bin op="bic">
-            <refseg name=".text" off="0000002b" />
+            <refsym name="_cache_invalidate" />
             <val v="fffffff0" />
           </bin>
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000081">
+      <ep i="0000007e">
         <bin op="bic">
           <refseg name=".text" off="00000018" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000082">
+      <ep i="0000007f">
         <bin op="rol">
           <bin op="bic">
             <refseg name=".text" off="00000018" />
@@ -27561,13 +27511,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="0000008b">
+      <ep i="00000088">
         <bin op="bic">
           <refsym name="_message_send" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000008c">
+      <ep i="00000089">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_message_send" />
@@ -27576,28 +27526,28 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="0000008d">
+      <ep i="0000008a">
         <bin op="bic">
-          <refseg name=".text" off="00000043" />
+          <refseg name=".text" off="0000002b" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000008e">
+      <ep i="0000008b">
         <bin op="rol">
           <bin op="bic">
-            <refseg name=".text" off="00000043" />
+            <refseg name=".text" off="0000002b" />
             <val v="fffffff0" />
           </bin>
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000095">
+      <ep i="00000092">
         <bin op="bic">
           <refsym name="_free1" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000096">
+      <ep i="00000093">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_free1" />
@@ -27606,13 +27556,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000000ab">
+      <ep i="000000a6">
         <bin op="bic">
           <refseg name=".text" off="00000018" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000000ac">
+      <ep i="000000a7">
         <bin op="rol">
           <bin op="bic">
             <refseg name=".text" off="00000018" />
@@ -27621,13 +27571,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000000b5">
+      <ep i="000000b0">
         <bin op="bic">
           <refsym name="_message_send" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000000b6">
+      <ep i="000000b1">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_message_send" />
@@ -27636,28 +27586,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000000b7">
-        <bin op="bic">
-          <refseg name=".text" off="00000043" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="000000b8">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name=".text" off="00000043" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="000000be">
+      <ep i="000000b2">
         <bin op="bic">
           <refseg name=".text" off="0000002b" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000000bf">
+      <ep i="000000b3">
         <bin op="rol">
           <bin op="bic">
             <refseg name=".text" off="0000002b" />
@@ -27666,13 +27601,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000000c9">
+      <ep i="000000ba">
         <bin op="bic">
           <refsym name="_malloc1" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000000ca">
+      <ep i="000000bb">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_malloc1" />
@@ -27681,13 +27616,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000000eb">
+      <ep i="000000d9">
         <bin op="bic">
           <refsym name="_thread_yield" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000000ec">
+      <ep i="000000da">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_thread_yield" />
@@ -27696,13 +27631,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000000ff">
+      <ep i="000000ed">
         <bin op="bic">
           <refseg name=".text" off="00000018" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000100">
+      <ep i="000000ee">
         <bin op="rol">
           <bin op="bic">
             <refseg name=".text" off="00000018" />
@@ -27711,13 +27646,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000109">
+      <ep i="000000f7">
         <bin op="bic">
           <refsym name="_message_send" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000010a">
+      <ep i="000000f8">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_message_send" />
@@ -27726,58 +27661,43 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="0000010b">
+      <ep i="00000102">
         <bin op="bic">
-          <refseg name=".text" off="00000043" />
+          <refseg name=".text" off="000000c2" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000010c">
+      <ep i="00000103">
         <bin op="rol">
           <bin op="bic">
-            <refseg name=".text" off="00000043" />
+            <refseg name=".text" off="000000c2" />
             <val v="fffffff0" />
           </bin>
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000116">
+      <ep i="00000127">
         <bin op="bic">
-          <refseg name=".text" off="000000d4" />
+          <refseg name=".text" off="00000099" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000117">
+      <ep i="00000128">
         <bin op="rol">
           <bin op="bic">
-            <refseg name=".text" off="000000d4" />
+            <refseg name=".text" off="00000099" />
             <val v="fffffff0" />
           </bin>
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="0000013b">
-        <bin op="bic">
-          <refseg name=".text" off="0000009c" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="0000013c">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name=".text" off="0000009c" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="0000013e">
+      <ep i="0000012a">
         <bin op="bic">
           <refseg name=".text" off="00000000" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000013f">
+      <ep i="0000012b">
         <bin op="rol">
           <bin op="bic">
             <refseg name=".text" off="00000000" />
@@ -27786,43 +27706,43 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000146">
+      <ep i="00000132">
         <bin op="bic">
           <refseg name="cacheline" off="00000000" />
           <val v="0000000f" />
+        </bin>
+      </ep>
+      <ep i="00000133">
+        <bin op="rol">
+          <bin op="bic">
+            <refseg name="cacheline" off="00000000" />
+            <val v="fffffff0" />
+          </bin>
+          <val v="0000000a" />
+        </bin>
+      </ep>
+      <ep i="00000144">
+        <bin op="bic">
+          <refseg name=".text" off="000000c2" />
+          <val v="0000000f" />
+        </bin>
+      </ep>
+      <ep i="00000145">
+        <bin op="rol">
+          <bin op="bic">
+            <refseg name=".text" off="000000c2" />
+            <val v="fffffff0" />
+          </bin>
+          <val v="0000000a" />
         </bin>
       </ep>
       <ep i="00000147">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name="cacheline" off="00000000" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="00000158">
-        <bin op="bic">
-          <refseg name=".text" off="000000d4" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="00000159">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name=".text" off="000000d4" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="0000015b">
         <bin op="bic">
           <refseg name="cacheline" off="00000000" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000015c">
+      <ep i="00000148">
         <bin op="rol">
           <bin op="bic">
             <refseg name="cacheline" off="00000000" />
@@ -27831,13 +27751,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000163">
+      <ep i="0000014f">
         <bin op="bic">
           <refseg name=".text" off="00000000" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000164">
+      <ep i="00000150">
         <bin op="rol">
           <bin op="bic">
             <refseg name=".text" off="00000000" />
@@ -27846,88 +27766,88 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000168">
+      <ep i="00000154">
         <bin op="bic">
-          <refseg name=".text" off="00000074" />
+          <refseg name=".text" off="00000071" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000169">
+      <ep i="00000155">
         <bin op="rol">
           <bin op="bic">
-            <refseg name=".text" off="00000074" />
+            <refseg name=".text" off="00000071" />
             <val v="fffffff0" />
           </bin>
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="00000183">
+      <ep i="0000016f">
         <bin op="bic">
-          <refseg name=".text" off="0000009c" />
+          <refseg name=".text" off="00000099" />
           <val v="0000000f" />
+        </bin>
+      </ep>
+      <ep i="00000170">
+        <bin op="rol">
+          <bin op="bic">
+            <refseg name=".text" off="00000099" />
+            <val v="fffffff0" />
+          </bin>
+          <val v="0000000a" />
+        </bin>
+      </ep>
+      <ep i="00000173">
+        <bin op="bic">
+          <refseg name="cacheline" off="00000000" />
+          <val v="0000000f" />
+        </bin>
+      </ep>
+      <ep i="00000174">
+        <bin op="rol">
+          <bin op="bic">
+            <refseg name="cacheline" off="00000000" />
+            <val v="fffffff0" />
+          </bin>
+          <val v="0000000a" />
+        </bin>
+      </ep>
+      <ep i="00000176">
+        <bin op="bic">
+          <refseg name=".text" off="00000000" />
+          <val v="0000000f" />
+        </bin>
+      </ep>
+      <ep i="00000177">
+        <bin op="rol">
+          <bin op="bic">
+            <refseg name=".text" off="00000000" />
+            <val v="fffffff0" />
+          </bin>
+          <val v="0000000a" />
+        </bin>
+      </ep>
+      <ep i="00000178">
+        <bin op="bic">
+          <refseg name="cacheline" off="00000000" />
+          <val v="0000000f" />
+        </bin>
+      </ep>
+      <ep i="00000179">
+        <bin op="rol">
+          <bin op="bic">
+            <refseg name="cacheline" off="00000000" />
+            <val v="fffffff0" />
+          </bin>
+          <val v="0000000a" />
         </bin>
       </ep>
       <ep i="00000184">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name=".text" off="0000009c" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="00000187">
-        <bin op="bic">
-          <refseg name="cacheline" off="00000000" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="00000188">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name="cacheline" off="00000000" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="0000018a">
-        <bin op="bic">
-          <refseg name=".text" off="00000000" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="0000018b">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name=".text" off="00000000" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="0000018c">
-        <bin op="bic">
-          <refseg name="cacheline" off="00000000" />
-          <val v="0000000f" />
-        </bin>
-      </ep>
-      <ep i="0000018d">
-        <bin op="rol">
-          <bin op="bic">
-            <refseg name="cacheline" off="00000000" />
-            <val v="fffffff0" />
-          </bin>
-          <val v="0000000a" />
-        </bin>
-      </ep>
-      <ep i="00000198">
         <bin op="bic">
           <refsym name="_mq_register" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="00000199">
+      <ep i="00000185">
         <bin op="rol">
           <bin op="bic">
             <refsym name="_mq_register" />
@@ -27936,13 +27856,13 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="0000019a">
+      <ep i="00000186">
         <bin op="bic">
           <refseg name="cacheline" off="00000000" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="0000019b">
+      <ep i="00000187">
         <bin op="rol">
           <bin op="bic">
             <refseg name="cacheline" off="00000000" />
@@ -27951,28 +27871,28 @@
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000001a2">
+      <ep i="0000018e">
         <bin op="bic">
-          <refseg name=".text" off="00000119" />
+          <refseg name=".text" off="00000105" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000001a3">
+      <ep i="0000018f">
         <bin op="rol">
           <bin op="bic">
-            <refseg name=".text" off="00000119" />
+            <refseg name=".text" off="00000105" />
             <val v="fffffff0" />
           </bin>
           <val v="0000000a" />
         </bin>
       </ep>
-      <ep i="000001ac">
+      <ep i="00000198">
         <bin op="bic">
           <refseg name="cacheline" off="00000000" />
           <val v="0000000f" />
         </bin>
       </ep>
-      <ep i="000001ad">
+      <ep i="00000199">
         <bin op="rol">
           <bin op="bic">
             <refseg name="cacheline" off="00000000" />
@@ -27993,39 +27913,38 @@
     <extrn name="_thread_yield" />
     <extrn name="_mq_register" />
     <local name="." seg="cacheline" off="00000004" />
-    <local name=".L12" seg=".text" off="00000039" />
-    <local name=".L13" seg=".text" off="0000003c" />
-    <local name=".L15" seg=".text" off="0000006d" />
-    <local name=".L16" seg=".text" off="0000005f" />
-    <local name=".L20" seg=".text" off="0000005d" />
-    <local name=".L25" seg=".text" off="00000094" />
-    <local name=".L28" seg=".text" off="000000c0" />
-    <local name=".L30" seg=".text" off="000000c8" />
-    <local name=".L32" seg=".text" off="000000ff" />
-    <local name=".L33" seg=".text" off="000000e6" />
-    <local name=".L34" seg=".text" off="000000f3" />
-    <local name=".L35" seg=".text" off="000000ed" />
-    <local name=".L39" seg=".text" off="00000115" />
+    <local name=".L12" seg=".text" off="00000061" />
+    <local name=".L13" seg=".text" off="00000050" />
+    <local name=".L19" seg=".text" off="00000056" />
+    <local name=".L20" seg=".text" off="0000006c" />
+    <local name=".L21" seg=".text" off="00000046" />
+    <local name=".L22" seg=".text" off="0000004e" />
+    <local name=".L27" seg=".text" off="00000091" />
+    <local name=".L32" seg=".text" off="000000b9" />
+    <local name=".L34" seg=".text" off="000000ed" />
+    <local name=".L35" seg=".text" off="000000d4" />
+    <local name=".L36" seg=".text" off="000000e1" />
+    <local name=".L37" seg=".text" off="000000db" />
     <local name=".L4" seg=".text" off="0000000e" />
-    <local name=".L44" seg=".text" off="00000166" />
-    <local name=".L45" seg=".text" off="00000145" />
-    <local name=".L46" seg=".text" off="00000128" />
-    <local name=".L48" seg=".text" off="0000015a" />
-    <local name=".L49" seg=".text" off="00000133" />
-    <local name=".L50" seg=".text" off="00000150" />
-    <local name=".L52" seg=".text" off="000001ac" />
-    <local name=".L53" seg=".text" off="0000019a" />
+    <local name=".L41" seg=".text" off="00000101" />
+    <local name=".L46" seg=".text" off="00000152" />
+    <local name=".L47" seg=".text" off="00000131" />
+    <local name=".L48" seg=".text" off="00000114" />
+    <local name=".L50" seg=".text" off="00000146" />
+    <local name=".L51" seg=".text" off="0000011f" />
+    <local name=".L52" seg=".text" off="0000013c" />
+    <local name=".L54" seg=".text" off="00000198" />
+    <local name=".L55" seg=".text" off="00000186" />
     <local name=".L6" seg=".text" off="00000011" />
     <local name="_cache_flushMem" seg=".text" off="00000000" />
-    <local name="_cache_invalidateMem" seg=".text" off="0000002b" />
     <local name="_clearResponse" seg=".text" off="00000018" />
-    <globl name="_free" seg=".text" off="00000074" />
-    <local name="_getResponse" seg=".text" off="00000043" />
-    <globl name="_malloc" seg=".text" off="0000009c" />
-    <globl name="_mc_initRPC" seg=".text" off="0000016b" />
-    <globl name="_putchar" seg=".text" off="000000d4" />
+    <globl name="_free" seg=".text" off="00000071" />
+    <local name="_getResponse" seg=".text" off="0000002b" />
+    <globl name="_malloc" seg=".text" off="00000099" />
+    <globl name="_mc_initRPC" seg=".text" off="00000157" />
+    <globl name="_putchar" seg=".text" off="000000c2" />
     <globl name="_responseAreas" seg="cacheline" off="00000000" />
-    <local name="_rpcServer" seg=".text" off="00000119" />
+    <local name="_rpcServer" seg=".text" off="00000105" />
   </object>
   <object file="mcMain.o" coderota="00000000" datarota="00000002">
     <segment name=".text" kind="code" ibase="00000000" isize="000000a0" rota="00000000" alignbic="00000000">
