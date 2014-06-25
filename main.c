@@ -41,7 +41,9 @@ void mc_init() {
 }
 
 void mc_main() {
+__asm__("j7 7");
 	int core = corenum();
+	
 	if(core == 2){
 		wait_after_done = 0;
 		s_processor = new_processor("Processor1");
@@ -49,6 +51,7 @@ void mc_main() {
 		//puts(s_tasks[0].name);
 		//puts(s_tasks[1].name);
 		//puts(s_tasks[2].name);
+		
 		putchar(s_tasks[0].index+'0');
 		putchar(s_tasks[1].index+'0');
 		putchar(s_tasks[2].index+'0');
@@ -74,6 +77,8 @@ void mc_main() {
 		task_3();
 		while (1);
 	}
+	else
+	while(1);
 }
 
 int test_func_execute_time(Func func){
@@ -188,6 +193,7 @@ __asm__("j7 7");
 	putchar('a');
 	int dest3 = reverse_integer(1000);
 	int dest4 = reverse_integer(-1000);
+	printf("task1 finished\n");
 //	putchar('a');
 
 	if(wait_after_done==1){
