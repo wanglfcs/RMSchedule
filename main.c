@@ -33,7 +33,7 @@ void task_2();
 void task_3();
 
 int reverse_integer(int x);
-int test_func_execute_time(Func *func);
+int test_func_execute_time(Func func);
 void init_tasks(Processor *processor, Task *tasks, int count);
 void idle(){while(1);}
 
@@ -76,9 +76,10 @@ void mc_main() {
 	}
 }
 
-int test_func_execute_time(Func *func){
-	/*counters_start();*/
-	(*func)();
+int test_func_execute_time(Func func){
+//		__asm__("j7 7");
+	counters_start();
+	(func)();
 	/*counters_stop();*/
 	/*int count = counters_readAndZero(0);*/
 	/*return count/CLOCK_TO_MS;*/
@@ -87,16 +88,16 @@ int test_func_execute_time(Func *func){
 
 void init_tasks(Processor *processor, Task *tasks, int count)
 {
-__asm__("j7 7");
+//__asm__("j7 7");
 	puts("init_tasks");
 	putchar(count+'0');
 	putchar(10);
 	Func t1 = task_1;
-	tasks[0].func = &t1;
+	tasks[0].func = t1;
 	Func t2 = task_2;
-	tasks[1].func = &t2;
+	tasks[1].func = t2;
 	Func t3 = task_3;
-	tasks[2].func = &t3;
+	tasks[2].func = t3;
 
 	for(int i=0;i<count;i++){
 		/*puts("test func execute time ");*/
@@ -178,13 +179,16 @@ void task_1() {
 		/*putchar(10);*/
 	}
 //	CLI
+__asm__("j7 7");
 	putchar('A');
 //	STI
 	int dest0 = reverse_integer(123456789);
 	int dest1 = reverse_integer(-123456789);
 	int dest2 = reverse_integer(0);
+	putchar('a');
 	int dest3 = reverse_integer(1000);
 	int dest4 = reverse_integer(-1000);
+//	putchar('a');
 
 	if(wait_after_done==1){
 		task_done(s_processor);
@@ -226,6 +230,7 @@ void task_2(){
 		int dest3 = reverse_integer(1000);
 		int dest4 = reverse_integer(-1000);
 	}
+	putchar('b');
 
 	if(wait_after_done){
 		task_done(s_processor);
