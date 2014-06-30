@@ -140,10 +140,10 @@ _isr:
 	
 	//open interrupt
 	ld		wq,0
-	aqw_ld void,26
 
 	//set conditon register
 	ld	    wq,rq
+	aqw_ld void,26
 	aqw_ld void,250
 
 	j		  rq             

@@ -120,7 +120,7 @@ int putchar(int c) {
     msg[0] = mcPutchar;
     msg[1] = c;
     message_send(1, msgTypeRPC, &msg, 2);
-    //getResponse(); // block to avoid overflowing core #1's message queue
+	getResponse(); // block to avoid overflowing core #1's message queue
    }
   return 0;
 }

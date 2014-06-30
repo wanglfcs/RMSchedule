@@ -11,7 +11,7 @@
 
 
 //#define CLOCK_TO_MS(clock, ms) { ms = (clock/10000);}
-const int CLOCK_TO_MS = 10000000;
+const int CLOCK_TO_MS = 100000;
 static Processor *s_processor;
 static int currentTask=2;
 static Task *s_tasks;
@@ -38,6 +38,11 @@ void init_tasks(Processor *processor, Task *tasks, int count);
 void idle(){while(1);}
 
 void mc_init() {
+	float a=1.2,b=1.3;
+	int res=(int)(a+b);
+	printf("res=%d\n",res);
+	//while(1);
+
 }
 
 void mc_main() {
@@ -85,9 +90,10 @@ int test_func_execute_time(Func func){
 //		__asm__("j7 7");
 	counters_start();
 	(func)();
-	/*counters_stop();*/
-	/*int count = counters_readAndZero(0);*/
-	/*return count/CLOCK_TO_MS;*/
+	counters_stop();
+	int count = counters_readAndZero(4);
+	printf("count %d",count);
+	return count>>13;
 	return 5;
 }
 
@@ -109,6 +115,7 @@ void init_tasks(Processor *processor, Task *tasks, int count)
 		tasks[i].c = test_func_execute_time(tasks[i].func);
 		tasks[i].t = tasks[i].c*5;
 		tasks[i].saved_state[30] = (int)isr;
+		printf("task %d exec time %d\n",i,tasks[i].c);
 		/*putchar(10);*/
 	}
 
@@ -145,7 +152,8 @@ void schedule(){
 		myprintf("%s\n",task_to_run->name);
 	}
 	timer++;
-	
+	for(i=0;i<3;i++)
+		dump_task(s_processor->tasks+i);
    /* pre_task=s_tasks+currentTask;*/
 	//currentTask = (currentTask + 1) %3;
 	//task_to_run=s_tasks+currentTask;
@@ -186,14 +194,13 @@ void task_1() {
 //	CLI
 __asm__("j7 7");
 	putchar('A');
-//	STI
+//
 	int dest0 = reverse_integer(123456789);
 	int dest1 = reverse_integer(-123456789);
 	int dest2 = reverse_integer(0);
 	putchar('a');
 	int dest3 = reverse_integer(1000);
 	int dest4 = reverse_integer(-1000);
-	printf("task1 finished\n");
 //	putchar('a');
 
 	if(wait_after_done==1){
